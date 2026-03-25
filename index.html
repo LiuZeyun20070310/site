@@ -1,1 +1,58 @@
-sdf
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>3D 立方体</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f0f0f0;
+      margin: 0;
+    }
+    .cube {
+      position: relative;
+      width: 200px;
+      transform-style: preserve-3d; /* 保持 3D 空间 */
+      animation: rotate 5s infinite linear; /* 可选：自动旋转 */
+    }
+    /* 立方体的 6 个面 */
+    .face {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4); /* 渐变背景 */
+      border: 2px solid #333;
+    }
+    /* 前面 */
+    .front  { transform: translateZ(100px); }
+    /* 后面 */
+    .back   { transform: translateZ(-100px) rotateY(180deg); }
+    /* 左面 */
+    .left   { transform: translateX(-100px) rotateY(-90deg); }
+    /* 右面 */
+    .right  { transform: translateX(100px) rotateY(90deg); }
+    /* 上面 */
+    .top    { transform: translateY(-100px) rotateX(90deg); }
+    /* 下面 */
+    .bottom { transform: translateY(100px) rotateX(-90deg); }
+    /* 旋转动画（可选） */
+    @keyframes rotate {
+      from { transform: rotateX(0deg) rotateY(0deg); }
+      to   { transform: rotateX(360deg) rotateY(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="cube">
+    <div class="face front"></div>
+    <div class="face back"></div>
+    <div class="face left"></div>
+    <div class="face right"></div>
+    <div class="face top"></div>
+    <div class="face bottom"></div>
+  </div>
+</body>
+</html>
