@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>解一元二次方程</title>
+</head>
+<body>
+    <script>
+        // (1) 连续三次提示用户输入系数
+        let a = parseFloat(prompt("请输入一元二次方程的系数a（a>0）："));
+        let b = parseFloat(prompt("请输入一元二次方程的系数b："));
+        let c = parseFloat(prompt("请输入一元二次方程的系数c："));
+
+        // (2) 计算判别式delta
+        let delta = b * b - 4 * a * c;
+
+        // (3) 计算两个根
+        let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+        let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+
+        // (4) 弹窗提示结果
+        alert(`方程的两个根为：x1 = ${x1.toFixed(2)}, x2 = ${x2.toFixed(2)}`);
+
+        // (5) 控制台输出结果
+        console.log(`方程的两个根为：x1 = ${x1.toFixed(2)}, x2 = ${x2.toFixed(2)}`);
+    </script>
+</body>
+</html>
