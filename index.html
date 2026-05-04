@@ -1,58 +1,43 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <title>3D 立方体</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: #f0f0f0;
-      margin: 0;
-    }
-    .cube {
-      position: relative;
-      width: 200px;
-      transform-style: preserve-3d; /* 保持 3D 空间 */
-      animation: rotate 5s infinite linear; /* 可选：自动旋转 */
-    }
-    /* 立方体的 6 个面 */
-    .face {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      background: linear-gradient(45deg, #ff6b6b, #4ecdc4); /* 渐变背景 */
-      border: 2px solid #333;
-    }
-    /* 前面 */
-    .front  { transform: translateZ(100px); }
-    /* 后面 */
-    .back   { transform: translateZ(-100px) rotateY(180deg); }
-    /* 左面 */
-    .left   { transform: translateX(-100px) rotateY(-90deg); }
-    /* 右面 */
-    .right  { transform: translateX(100px) rotateY(90deg); }
-    /* 上面 */
-    .top    { transform: translateY(-100px) rotateX(90deg); }
-    /* 下面 */
-    .bottom { transform: translateY(100px) rotateX(-90deg); }
-    /* 旋转动画（可选） */
-    @keyframes rotate {
-      from { transform: rotateX(0deg) rotateY(0deg); }
-      to   { transform: rotateX(360deg) rotateY(360deg); }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>河内塔3D游戏</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="cube">
-    <div class="face front"></div>
-    <div class="face back"></div>
-    <div class="face left"></div>
-    <div class="face right"></div>
-    <div class="face top"></div>
-    <div class="face bottom"></div>
+  <div class="wrap">
+    <h1>河内塔 3D 益智游戏</h1>
+    <div class="control-box">
+      <label>圆盘数量：</label>
+      <input type="number" id="diskNum" min="3" max="8" value="3">
+      <input type="range" id="diskRange" min="3" max="8" value="3">
+      <button id="reset">重置游戏</button>
+      <button id="autoPlay">自动解题</button>
+      <span>步数：<span id="stepCount">0</span></span>
+    </div>
   </div>
+
+  <div class="game-box">
+    <div class="tower" data-id="0">
+      <div class="pole"></div>
+      <div class="disk-box"></div>
+    </div>
+    <div class="tower" data-id="1">
+      <div class="pole"></div>
+      <div class="disk-box"></div>
+    </div>
+    <div class="tower" data-id="2">
+      <div class="pole"></div>
+      <div class="disk-box"></div>
+    </div>
+  </div>
+
+  <!-- 提示弹窗 -->
+  <div class="modal" id="warnModal">违规移动，大盘不能放小盘上！</div>
+  <div class="modal" id="winModal">🎉 恭喜通关！挑战成功</div>
+
+  <script src="script.js"></script>
 </body>
 </html>

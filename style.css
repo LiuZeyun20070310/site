@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f0f8ff;
+  font-family: "微软雅黑", sans-serif;
+  perspective: 1200px;
+}
+
+.wrap {
+  text-align: center;
+  padding: 30px 0;
+}
+
+h1 {
+  color: #222;
+  margin-bottom: 20px;
+}
+
+.control-box {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 6px 16px;
+  border: none;
+  background: #409eff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #999;
+  cursor: not-allowed;
+}
+
+.game-box {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 50px;
+  transform-style: preserve-3d;
+}
+
+.tower {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.pole {
+  width: 18px;
+  height: 180px;
+  background: linear-gradient(#8b4513, #d2b48c);
+  border-radius: 4px;
+}
+
+.disk {
+  height: 22px;
+  border-radius: 10px;
+  margin: 2px 0;
+  transform: translateZ(15px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+}
+
+/* 圆盘大小颜色 */
+.disk[data-size="1"] {width: 50px;background: #ff6b6b;}
+.disk[data-size="2"] {width: 75px;background: #ffa94d;}
+.disk[data-size="3"] {width: 100px;background: #ffd43b;}
+.disk[data-size="4"] {width: 125px;background: #69db7c;}
+.disk[data-size="5"] {width: 150px;background: #74c0fc;}
+.disk[data-size="6"] {width: 170px;background: #b197fc;}
+.disk[data-size="7"] {width: 190px;background: #f783ac;}
+.disk[data-size="8"] {width: 210px;background: #845ec2;}
+
+.disk.selected {
+  box-shadow: 0 0 15px #ff3333;
+}
+
+/* 动画 */
+@keyframes shake {
+  0%,100%{transform: translateX(0);}
+  25%{transform: translateX(-8px);}
+  75%{transform: translateX(8px);}
+}
+.shake {
+  animation: shake 0.3s ease 2;
+}
+
+@keyframes glow {
+  0%{box-shadow:0 0 10px #ffd700;}
+  50%{box-shadow:0 0 30px #ffd700;}
+  100%{box-shadow:0 0 10px #ffd700;}
+}
+.win-glow {
+  animation: glow 1s infinite;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  padding: 20px 40px;
+  border-radius: 8px;
+  display: none;
+  font-size: 18px;
+}
